@@ -73,7 +73,7 @@
 					fn.settings.$node
 						.attr({
 							id             : fn.settings.id,
-							role           : 'checkbox',
+							role           : 'checkbox', 
 							'aria-checked' : false,
 							focusable      : true,
 							tabIndex       : -1 //manual focus
