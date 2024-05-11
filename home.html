@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Reservation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/home.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>TUB</h1>
+        <p></p>
+    </header>
+
+    <!-- Conteúdo da página -->
+    <content>
+        <div class="container">
+            <h2>Compra o teu bilhete do Autocarro</h2>
+            <table class="table table-fluid" id="myTable">
+            <thead>
+            <tr><th>Nº de Rota</th><th>Partida  ------- Chegada</th><th>Próximo Horario</th><th>Reservar</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>45</td><td>Ponte do Bico ------ Avenida Central</td><td>08:30</td><td><button class="book-now-btn"><a href="seat selection.html" style="color: inherit; text-decoration: none;">Reservar</a></button></td></tr>
+            </tbody>
+            </table>
+            <div><a href="home.html"><Button>Back to Home</Button></a></div>
+        </div>
+        <input id="hamburger" class="hamburger" type="checkbox"/>
+        <label class="hamburger" for="hamburger">
+            <i></i>
+            <text>
+                <close>Fechar</close>
+                <open>Menu</open>
+            </text>
+        </label>
+        <section class="drawer-list">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="booking.html">Book Ticket</a></li>
+                <li><a href="help.html">Help</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </section>
+    </content>
+    <footer>
+        <div class="footer">
+            <div id="button"></div>
+            <div id="container">
+                <div id="cont">
+                    <div class="footer_center">
+                        <h3>Obrigado pela Visita</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

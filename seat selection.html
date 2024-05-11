@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Site Simples de Reserva de Lugares de Autocarro</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="CSS/seats1.css">
+    <link rel="stylesheet" type="text/css" href="CSS/seats2.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="Javascript/seats1.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="grid-50">
+                    <div id="seat-map">
+                        <div class="front-indicator">Reserva de Lugares do Autocarro</div>
+                        <h4 class="text-muted fw-bold text-center" style="padding-left:3em; margin:.5em">Da Primeira Fila</h4>
+                        <div id="bus-seat-map"></div>
+                        <h4 class="text-muted fw-bold text-center" style="padding-left:3em; margin:.5em">Fim da Fila de Lugares</h4>
+                    </div>
+                </div>
+                <div class="grid-50">
+                    <div class="booking-details">
+
+                        <form action="" method="post">
+
+                            <h2>Detalhes da Reserva</h2>
+
+                            <h3> Lugares Selecionados (<span id="counter">0</span>):</h3>
+                            <ul id="selected-seats"></ul>
+
+                            <h2>Total: <b>EUR <span id="total">0</span></b></h2>
+
+                            <a href="passengers Details.html"> <button type="button" id="checkout-button">Submeter Reserva</button></a>
+
+                        </form>
+
+                        <div id="legend"></div>
+                        <button id="reset-btn" type="button">Resetar Lugares do Autocarro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="Javascript/seats2.js"></script>
+</body>
+
+</html>

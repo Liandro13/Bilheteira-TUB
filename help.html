@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Help</title>
+    <link rel="stylesheet" href="CSS/help.css">
+    <link rel="javascript" href="Javascript/help.js">
+</head>
+<body>
+	<input id="hamburger" class="hamburger" type="checkbox"/>
+		<label class="hamburger" for="hamburger">
+			<i></i>
+		  <text>
+			<close>close</close>
+			<open>menu</open>
+		  </text>
+		</label>
+		<section class="drawer-list">
+			  <ul>
+				<li><a href="home.html">Home</a></li>
+				<li><a href="booking.html">Book Ticket</a></li>
+				<li><a href="help.html">Help</a></li>
+				<li><a href="login.html">Login</a></li>
+			</ul>
+			</section>
+            <small>Enter message (optional) and click button "Send"</small>
+            <div class="wrapper centered">
+              <article class="letter">
+                <div class="side">
+                  <h1>Contact us</h1>
+                  <p>
+                    <textarea placeholder="Your message"></textarea>
+                  </p>
+                </div>
+                <div class="side">
+                  <p>
+                    <input type="text" placeholder="Your name">
+                  </p>
+                  <p>
+                    <input type="email" placeholder="Your email">
+                  </p>
+                  <p>
+                   <a href="home.html"><button id="sendLetter">Send</button></a>
+                   <a href="home.html"><button id="sendLetter">Back to home</button></a>
+                  </p>
+                </div>
+              </article>
+              <div class="envelope front"></div>
+              <div class="envelope back"></div>
+            </div>
+            <p class="result-message centered">Thank you for your message</p>
+</body>
+</html>
