@@ -20,12 +20,12 @@ $(document).ready(function() {
                 f: {
                     price: 200,
                     classes: 'first-class', //your custom CSS class
-                    category: 'First Class'
+                    category: 'Lugar com direito a Malas'
                 },
                 e: {
                     price: 150,
                     classes: 'economy-class', //your custom CSS class
-                    category: 'Economy Class'
+                    category: 'Classe Económica'
                 }
 
             },
@@ -38,15 +38,15 @@ $(document).ready(function() {
             legend: {
                 node: $('#legend'),
                 items: [
-                    ['f', 'available', 'First Class'],
-                    ['e', 'available', 'Economy Class'],
-                    ['f', 'unavailable', 'Already Booked']
+                    ['f', 'available', 'Lugar com direito a Malas'],
+                    ['e', 'available', 'Classe Económica'],
+                    ['f', 'unavailable', 'Reservado']
                 ]
             },
             click: function() {
                 if (this.status() == 'available') {
                     //let's create a new <li> which we'll add to the cart items
-                    $('<li>' + this.data().category + ' Seat # ' + this.settings.label + ': <b>INR ' + this.data().price + '</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
+                    $('<li>' + this.data().category + ' Lugar Nº ' + this.settings.label + ': <b><EUR ' + this.data().price + '</b> <a href="#" class="cancel-cart-item">[Clica para Cancelar]</a></li>')
                         .attr('id', 'cart-item-' + this.settings.id)
                         .data('seatId', this.settings.id)
                         .appendTo($cart);
@@ -114,7 +114,7 @@ $(function() {
     $('#checkout-button').click(function() {
         var items = $('#selected-seats li')
         if (items.length <= 0) {
-            alert("Please select atleast 1 seat first.")
+            alert("Seleciona um lugar!")
             return false;
         }
         var selected = [];
@@ -129,13 +129,13 @@ $(function() {
             })
         }
         localStorage.setItem('booked', JSON.stringify(selected))
-        alert("Seats has been Reserved successfully.")
+        alert("Lugar Reservado com sucesso")
         location.reload()
     })
     $('#reset-btn').click(function() {
-        if (confirm("are you sure to reset the reservation of the bus?") === true) {
+        if (confirm("Tens a certeza que queres cancelar a reserva?") === true) {
             localStorage.removeItem('booked')
-            alert("Seats has been Reset successfully.")
+            alert("Cancelado com sucesso!")
             location.reload()
         }
     })

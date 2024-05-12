@@ -10,7 +10,7 @@ body {
     font-family: cursive;
     max-height: 100%;
     overflow: auto;
-    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    background-color:#017CB7;
     color: #e5e3e3;
     overflow-x: hidden;
 }
@@ -233,5 +233,5 @@ li.seatCharts-legendItem {
     display: block;
     border: none;
     cursor: pointer;
-    background-image: linear-gradient(to right, #06beb6 0%, #48b1bf 51%, #06beb6 100%);
+    background-color: #0093E8;
 }
