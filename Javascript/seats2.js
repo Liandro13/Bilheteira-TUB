@@ -18,12 +18,12 @@ $(document).ready(function() {
             ],
             seats: {
                 f: {
-                    price: 200,
+                    price: 4,
                     classes: 'first-class', //your custom CSS class
                     category: 'Lugar com direito a Malas'
                 },
                 e: {
-                    price: 150,
+                    price: 2,
                     classes: 'economy-class', //your custom CSS class
                     category: 'Classe Económica'
                 }

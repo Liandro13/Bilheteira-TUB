@@ -434,13 +434,13 @@ body {
     color: #fff;
     font-size: 16px;
     text-transform: uppercase;
-    width: 80px;
+    width: 160px;
     border: 0;
     padding: 10px 0;
     margin-top: 10px;
     margin-left: -5px;
     border-radius: 5px;
-    background-color: #ffffffc4;
+    background-color: #6547de8f;
     -webkit-transition: background-color 300ms;
     -moz-transition: background-color 300ms;
     transition: background-color 300ms;
