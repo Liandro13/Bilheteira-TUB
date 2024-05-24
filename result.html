@@ -1,55 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rate us</title>
+    <title>Bilhete de Viagem</title>
     <link rel="stylesheet" href="CSS/result.css">
-    <link rel="stylesheet" href="Javascript/result.js">
+    <style>
+        .passenger-info, .reservation-info {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
-  <script>
-    // Script para exibir os dados do bilhete
-    window.onload = function() {
-        const ticketContent = document.getElementById('ticket-content');
-        const bookedData = JSON.parse(localStorage.getItem('booked'));
+<script>
+// Script para exibir os dados do bilhete
+window.onload = function() {
+    const ticketContent = document.getElementById('ticket-content');
+    const bookedData = JSON.parse(localStorage.getItem('booked'));
 
-        if (bookedData && Array.isArray(bookedData)) {
-            // O primeiro elemento de bookedData é o lugar do autocarro
-            const busSeat = bookedData[0];
-            // O segundo elemento é o objeto com os dados do passageiro
-            const passenger = bookedData[1];
-
-            if (passenger) {
-                const passengerDiv = document.createElement('div');
-                passengerDiv.className = 'passenger-info';
-                passengerDiv.innerHTML = `
-                    <h2>Passageiro</h2>
-                    <p><strong>Nome:</strong> ${passenger.name}</p>
-                    <p><strong>Email:</strong> ${passenger.email}</p>
-                    <p><strong>Telefone:</strong> ${passenger.phone}</p>
-                    <p><strong>Data de Nascimento:</strong> ${passenger.dob}</p>
-                    <p><strong>Género:</strong> ${passenger.gender}</p>
-                    <p><strong>Lugar do Autocarro:</strong> ${busSeat}</p>
-                `;
-                ticketContent.appendChild(passengerDiv);
+    if (bookedData && Array.isArray(bookedData)) {
+        bookedData.forEach((reservation, index) => {
+            if (reservation.passengers && reservation.passengers.length > 0) {
+                reservation.passengers.forEach((passenger, passengerIndex) => {
+                    const passengerDiv = document.createElement('div');
+                    passengerDiv.className = 'passenger-info';
+                    passengerDiv.innerHTML = `
+                        <h2>Passageiro ${passengerIndex + 1}</h2>
+                        <p><strong>Nome:</strong> ${passenger.name}</p>
+                        <p><strong>Email:</strong> ${passenger.email}</p>
+                        <p><strong>Telefone:</strong> ${passenger.phone}</p>
+                        <p><strong>Data de Nascimento:</strong> ${passenger.dob}</p>
+                        <p><strong>Género:</strong> ${passenger.gender}</p>
+                        <p><strong>Lugar do Autocarro:</strong> ${reservation.id}</p>
+                        <p><strong>Categoria:</strong> ${reservation.category}</p>
+                        <p><strong>Preço:</strong> ${reservation.price}€</p>
+                    `;
+                    ticketContent.appendChild(passengerDiv);
+                });
             } else {
-                ticketContent.innerHTML = '<p>Nenhum dado encontrado.</p>';
+                const reservationDiv = document.createElement('div');
+                reservationDiv.className = 'reservation-info';
+                reservationDiv.innerHTML = `
+                    <h2>Reserva ${index + 1}</h2>
+                    <p><strong>Lugar do Autocarro:</strong> ${reservation.id}</p>
+                    <p><strong>Categoria:</strong> ${reservation.category}</p>
+                    <p><strong>Preço:</strong> EUR ${reservation.price}</p>
+                `;
+                ticketContent.appendChild(reservationDiv);
             }
-        } else {
-            ticketContent.innerHTML = '<p>Nenhum dado encontrado.</p>';
+        });
+    } else {
+        ticketContent.innerHTML = '<p>Nenhum dado encontrado.</p>';
+    }
+
+    // Função de reembolso
+    document.getElementById('refund-button').addEventListener('click', function() {
+        if (confirm("Tens a certeza que queres cancelar a reserva?") === true) {
+            localStorage.removeItem('booked');
+            alert("O reembolso será processado nas próximas 24 horas.");
+            window.location.href = 'home.html';
         }
-    };
+    });
+};
 </script>
 
-    <div class="container"><a href="home.html"></a>
-        <div class="feedback">   
-          
-            <h1>Bilhete de Viagem</h1>
-            <div id="ticket-content"></div>
-        
-          <div class="rating">
+<div class="container">
+    <a href="home.html"></a>
+    <div class="feedback">
+        <h1>Bilhete de Viagem</h1>
+        <div id="ticket-content"></div>
+        <button id="refund-button">Reembolso</button>
+        <div class="rating">
             <input type="radio" name="rating" id="rating-5">
             <label for="rating-5"></label>
             <input type="radio" name="rating" id="rating-4">
@@ -60,10 +84,8 @@
             <label for="rating-2"></label>
             <input type="radio" name="rating" id="rating-1">
             <label for="rating-1"></label>
-            
-            
-          
         </div>
-      </div>
+    </div>
+</div>
 </body>
 </html>

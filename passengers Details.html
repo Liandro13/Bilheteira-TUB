@@ -60,7 +60,7 @@
             <h3>Passageiro ${passengerCount}</h3>
             <div class="elem-group">
               <label for="passenger${passengerCount}-name">Nome</label>
-              <input type="text" id="passenger${passengerCount}-name" name="passenger${passengerCount}_name" placeholder="Jane Doe" pattern="[A-Z\sa-z]{3,20}" required>
+              <input type="text" id="passenger${passengerCount}-name" name="passenger${passengerCount}_name" placeholder="Jane Doe" pattern="[A-Z\\sa-z]{3,20}" required>
             </div>
             <div class="elem-group">
               <label for="passenger${passengerCount}-email">E-mail</label>
@@ -94,35 +94,41 @@
             });
           }
         });
-      
+
         document.getElementById('payment-button').addEventListener('click', function() {
-          const passengerGroups = document.getElementsByClassName('passenger-group');
-          let passengers = [];
-      
-          for (let i = 0; i < passengerGroups.length; i++) {
-            const passenger = {
-              name: passengerGroups[i].querySelector(`input[name="passenger${i+1}_name"]`).value,
-              email: passengerGroups[i].querySelector(`input[name="passenger${i+1}_email"]`).value,
-              phone: passengerGroups[i].querySelector(`input[name="passenger${i+1}_phone"]`).value,
-              dob: passengerGroups[i].querySelector(`input[name="passenger${i+1}_dob"]`).value,
-              gender: passengerGroups[i].querySelector(`select[name="passenger${i+1}_room_preference"]`).value
-            };
-            passengers.push(passenger);
-          }
-      
-          // Recuperar os dados existentes no localStorage
-          let existingData = localStorage.getItem('booked');
-          existingData = existingData ? JSON.parse(existingData) : {};
-      
-          // Atualizar os dados dos passageiros
-          existingData.passengers = passengers;
-      
-          // Guardar os dados atualizados no localStorage
-          localStorage.setItem('booked', JSON.stringify(existingData));
-          
-          // Redirecionar para a página de pagamento
-          window.location.href = 'payments.html';
+            const passengers = [];
+            const passengerGroups = document.getElementsByClassName('passenger-group');
+
+            for (let i = 0; i < passengerGroups.length; i++) {
+                const passengerGroup = passengerGroups[i];
+                const name = passengerGroup.querySelector(`#passenger${i + 1}-name`).value;
+                const email = passengerGroup.querySelector(`#passenger${i + 1}-email`).value;
+                const phone = passengerGroup.querySelector(`#passenger${i + 1}-phone`).value;
+                const dob = passengerGroup.querySelector(`#passenger${i + 1}-dob`).value;
+                const gender = passengerGroup.querySelector(`#passenger${i + 1}-room-selection`).value;
+
+                passengers.push({
+                    name,
+                    email,
+                    phone,
+                    dob,
+                    gender
+                });
+            }
+
+            const bookedSeats = !!localStorage.getItem('booked') ? JSON.parse(localStorage.getItem('booked')) : [];
+            const newBookedSeats = bookedSeats.map(seat => {
+                return {
+                    ...seat,
+                    passengers
+                };
+            });
+
+            localStorage.setItem('booked', JSON.stringify(newBookedSeats));
+            alert("Dados guardados com sucesso!");
+            window.location.href = 'payments.html';
         });
+      
       </script>
 </body>
 </html>
