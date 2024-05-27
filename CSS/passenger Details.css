@@ -50,8 +50,8 @@ body {
   .delete-passenger-btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #000000;
+    background-color: rgba(0, 0, 255, 0.697);
+    color: #aaaaaa;
     border: none;
     text-align: center;
     text-decoration: none;

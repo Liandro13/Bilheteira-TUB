@@ -65,7 +65,7 @@
             tableBody.innerHTML = '';
             routes.forEach(route => {
                 const row = document.createElement('tr');
-                row.innerHTML = `<td>${route.number}</td><td>${route.departure}</td><td>${route.destination}</td><td>${route.schedule}</td><td><button class="book-now-btn"><a href="seat selection.html" style="color: inherit; text-decoration: none;">Reservar</a></button></td>`;
+                row.innerHTML = `<td>${route.number}</td><td>${route.departure}</td><td>${route.destination}</td><td>${route.schedule}</td><td><button class="book-now-btn"><a href="lugares.html" style="color: inherit; text-decoration: none;">Reservar</a></button></td>`;
                 tableBody.appendChild(row);
             });
         }

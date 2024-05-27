@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilhete de Viagem</title>
+    <link rel="stylesheet" href="CSS/result.css">
+    <style>
+        body {
+            background-color: #017CB7;
+            color: white;
+        }
+        .passenger-info, .reservation-info {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: white;
+            color: black;
+        }
+        #refund-button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="./Javascript/bilhete.js"></script>
+
+<div class="container">
+    <a href="home.html"></a>
+    <div class="feedback">
+        <h1>Bilhete de Viagem</h1>
+        <div id="ticket-content"></div>
+        <button id="refund-button">Reembolso</button>
+        <div id="qrcode"></div>
+        <div class="rating">
+            <input type="radio" name="rating" id="rating-5">
+            <label for="rating-5"></label>
+            <input type="radio" name="rating" id="rating-4">
+            <label for="rating-4"></label>
+            <input type="radio" name="rating" id="rating-3">
+            <label for="rating-3"></label>
+            <input type="radio" name="rating" id="rating-2">
+            <label for="rating-2"></label>
+            <input type="radio" name="rating" id="rating-1">
+            <label for="rating-1"></label>
+        </div>
+    </div>
+</div>
+</body>
+</html>

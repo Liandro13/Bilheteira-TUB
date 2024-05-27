@@ -20,35 +20,35 @@
         <section class="drawer-list">
             <ul>
             <li><a href="home.html">Início</a></li>
-            <li><a href="booking.html">Reservar Bilhete</a></li>
-            <li><a href="help.html">Ajuda</a></li>
+            <li><a href="home.html">Reservar Bilhete</a></li>
             <li><a href="login.html">Entrar</a></li>
-            <li><a href="#" onclick="toggleForms()">Criar Conta</a></li>
+            <li><a href="#" onclick="toggleForms(event)">Criar Conta</a></li>
           </ul>
           </section>
      </div>   
 
-    <form id="login-form" class="login">
+    <form id="login-form" class="login" onsubmit="event.preventDefault(); login();">
        <h1>Formulário de Login</h1>
         <input type="text" id="login-username" placeholder="Nome de Utilizador" required>
         <input type="password" id="login-password" placeholder="Palavra-passe" required>
-        <button type="button" onclick="login()">Entrar</button><br>
-        <button href="#" onclick="toggleForms()">Criar Conta</button><br>
+        <button type="submit">Entrar</button><br>
+        <button type="button" onclick="toggleForms(event)">Criar Conta</button><br>
       </form>
 
-    <form id="signup-form" class="login" style="display:none;">
+    <form id="signup-form" class="login" style="display:none;" onsubmit="event.preventDefault(); signup();">
        <h1>Formulário de Criar Conta</h1>
         <input type="text" id="signup-fullname" placeholder="Nome Completo" required>
         <input type="text" id="signup-username" placeholder="Nome de Utilizador" required>
         <input type="email" id="signup-email" placeholder="Email" required>
         <input type="password" id="signup-password" placeholder="Palavra-passe" required>
         <input type="password" id="signup-confirm-password" placeholder="Confirmar Palavra-passe" required>
-        <button type="button" onclick="signup()">Criar Conta</button><br>
-        <button href="#" onclick="toggleForms()">Já tem conta? Entrar</button>
+        <button type="submit">Criar Conta</button><br>
+        <button type="button" onclick="toggleForms(event)">Já tem conta? Entrar</button>
       </form>
 
     <script>
-        function toggleForms() {
+        function toggleForms(event) {
+            event.preventDefault(); // Previne o comportamento padrão
             const loginForm = document.getElementById('login-form');
             const signupForm = document.getElementById('signup-form');
             if (loginForm.style.display === 'none') {
@@ -81,7 +81,7 @@
 
             localStorage.setItem(username, JSON.stringify(user));
             alert('Conta criada com sucesso! Pode agora entrar.');
-            toggleForms();
+            toggleForms(event);
         }
 
         function login() {

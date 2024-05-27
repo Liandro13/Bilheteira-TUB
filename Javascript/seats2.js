@@ -1,5 +1,5 @@
 var firstSeatLabel = 1;
-var booked = !!localStorage.getItem('booked') ? $.parseJSON(localStorage.getItem('booked')) : [];
+var booked = !!localStorage.getItem('booked') ? JSON.parse(localStorage.getItem('booked')) : [];
 var sc; // Definir sc no escopo global
 
 $(document).ready(function() {
@@ -57,7 +57,7 @@ $(document).ready(function() {
                 /*
                  * Lets update the counter and total
                  *
-                 * .find function will not find the current seat, because it will change its stauts only after return
+                 * .find function will not find the current seat, because it will change its status only after return
                  * 'selected'. This is why we have to add 1 to the length and the current seat price to the total.
                  */
                 $counter.text(sc.find('selected').length + 1);
@@ -88,13 +88,13 @@ $(document).ready(function() {
         }
     });
 
-    //this will handle "[cancel]" link clicks
+    // This will handle "[cancel]" link clicks
     $('#selected-seats').on('click', '.cancel-cart-item', function() {
-        //let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
+        // Let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
         sc.get($(this).parents('li:first').data('seatId')).click();
     });
 
-    // let's mark already booked seats as unavailable
+    // Let's mark already booked seats as unavailable
     booked.forEach(function(seat) {
         sc.get(seat.id).status('unavailable');
     });
@@ -103,7 +103,7 @@ $(document).ready(function() {
 function recalculateTotal(sc) {
     var total = 0;
 
-    //basically find every selected seat and sum its price
+    // Basically find every selected seat and sum its price
     sc.find('selected').each(function() {
         total += this.data().price;
     });
@@ -133,10 +133,17 @@ $(function() {
                 selected.push(seat);
             });
         }
+
+        // Transformar e adicionar o valor "lugar"
+        selected.forEach(function(seat) {
+            seat.lugar = transformarId(seat.id);
+        });
+
         localStorage.setItem('booked', JSON.stringify(selected));
         alert("Lugar Reservado com sucesso");
         location.reload();
     });
+
     $('#reset-btn').click(function() {
         if (confirm("Tens a certeza que queres cancelar a reserva?") === true) {
             localStorage.removeItem('booked');
@@ -145,3 +152,10 @@ $(function() {
         }
     });
 });
+
+// Função para transformar os IDs conforme especificado
+function transformarId(id) {
+    const [fila, coluna] = id.split('_').map(Number);
+    const novoId = (fila - 1) * 4 + coluna; // Fórmula para transformar o ID
+    return novoId.toString();
+}

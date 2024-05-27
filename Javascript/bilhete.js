@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilhete de Viagem</title>
-    <link rel="stylesheet" href="CSS/result.css">
-    <style>
-        .passenger-info, .reservation-info {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-
-<script>
 // Script para exibir os dados do bilhete
 window.onload = function() {
     const ticketContent = document.getElementById('ticket-content');
@@ -52,6 +34,14 @@ window.onload = function() {
                 ticketContent.appendChild(reservationDiv);
             }
         });
+
+        // Gerar QR Code
+        const qrCodeDiv = document.createElement('div');
+        qrCodeDiv.id = 'qrcode';
+        ticketContent.appendChild(qrCodeDiv);
+
+        const qrCodeUrl = `https://example.com/reservation?id=${bookedData[0].id}`;
+        new QRCode(document.getElementById('qrcode'), qrCodeUrl);
     } else {
         ticketContent.innerHTML = '<p>Nenhum dado encontrado.</p>';
     }
@@ -65,27 +55,3 @@ window.onload = function() {
         }
     });
 };
-</script>
-
-<div class="container">
-    <a href="home.html"></a>
-    <div class="feedback">
-        <h1>Bilhete de Viagem</h1>
-        <div id="ticket-content"></div>
-        <button id="refund-button">Reembolso</button>
-        <div class="rating">
-            <input type="radio" name="rating" id="rating-5">
-            <label for="rating-5"></label>
-            <input type="radio" name="rating" id="rating-4">
-            <label for="rating-4"></label>
-            <input type="radio" name="rating" id="rating-3">
-            <label for="rating-3"></label>
-            <input type="radio" name="rating" id="rating-2">
-            <label for="rating-2"></label>
-            <input type="radio" name="rating" id="rating-1">
-            <label for="rating-1"></label>
-        </div>
-    </div>
-</div>
-</body>
-</html>

@@ -13,15 +13,15 @@
             <h1>Passageiro 1</h1>
             <div class="elem-group">
               <label for="passenger1-name">Nome</label>
-              <input type="text" id="passenger1-name" name="passenger1_name" placeholder="John Doe" pattern="[A-Z\sa-z]{3,20}" required>
+              <input type="text" id="passenger1-name" name="passenger1_name" placeholder="Nome Completo" pattern="[A-Z\sa-z]{3,20}" required>
             </div>
             <div class="elem-group">
               <label for="passenger1-email">E-mail</label>
-              <input type="email" id="passenger1-email" name="passenger1_email" placeholder="john.doe@email.com" required>
+              <input type="email" id="passenger1-email" name="passenger1_email" placeholder="exemplo@email.com" required>
             </div>
             <div class="elem-group">
               <label for="passenger1-phone">Telefone</label>
-              <input type="tel" id="passenger1-phone" name="passenger1_phone" placeholder="498-348-3872" pattern="(\d{3})-?\s?(\d{3})-?\s?(\d{4})" required>
+              <input type="tel" id="passenger1-phone" name="passenger1_phone" placeholder="915 322 166" pattern="(\d{3})-?\s?(\d{3})-?\s?(\d{4})" required>
             </div>
             <div class="elem-group">
               <label for="passenger1-dob">Data de Nascimento</label>
@@ -31,12 +31,11 @@
               <label for="passenger1-room-selection">Género</label>
               <select id="passenger1-room-selection" name="passenger1_room_preference" required>
                 <option value="">Escolha um género</option>
-                <option value="male">Masculino</option>
-                <option value="female">Feminino</option>
-                <option value="other">Outro</option>
+                <option value="Homem">Masculino</option>
+                <option value="Mulher">Feminino</option>
+                <option value="Outro">Outro</option>
               </select>
             </div>
-            <button type="button" class="delete-passenger-btn">Eliminar Passageiro</button><br>
           </div>
         </div>
         <hr>
@@ -51,7 +50,7 @@
         const addPassengerButton = document.getElementById('add');
         const passengerDetailsContainer = document.getElementById('passenger-details');
         let passengerCount = 1;
-      
+
         addPassengerButton.addEventListener('click', () => {
           passengerCount++;
           const newPassengerGroup = document.createElement('div');
@@ -60,11 +59,11 @@
             <h3>Passageiro ${passengerCount}</h3>
             <div class="elem-group">
               <label for="passenger${passengerCount}-name">Nome</label>
-              <input type="text" id="passenger${passengerCount}-name" name="passenger${passengerCount}_name" placeholder="Jane Doe" pattern="[A-Z\\sa-z]{3,20}" required>
+              <input type="text" id="passenger${passengerCount}-name" name="passenger${passengerCount}_name" placeholder="Nome Completo" pattern="[A-Z\\sa-z]{3,20}" required>
             </div>
             <div class="elem-group">
               <label for="passenger${passengerCount}-email">E-mail</label>
-              <input type="email" id="passenger${passengerCount}-email" name="passenger${passengerCount}_email" placeholder="exemplo@mail.com" required>
+              <input type="email" id="passenger${passengerCount}-email" name="passenger${passengerCount}_email" placeholder="exemplo@email.com" required>
             </div>
             <div class="elem-group">
               <label for="passenger${passengerCount}-phone">Telefone</label>
@@ -86,13 +85,16 @@
             <button type="button" class="delete-passenger-btn">Eliminar Passageiro</button>
           `;
           passengerDetailsContainer.appendChild(newPassengerGroup);
-      
+
           const deletePassengerButtons = document.getElementsByClassName('delete-passenger-btn');
           for (let i = 0; i < deletePassengerButtons.length; i++) {
-            deletePassengerButtons[i].addEventListener('click', () => {
-              newPassengerGroup.remove();
+            deletePassengerButtons[i].addEventListener('click', (event) => {
+              event.target.parentElement.remove();
             });
           }
+
+          // Redirecionar para a página lugares.html após adicionar um passageiro
+          window.location.href = 'lugares.html';
         });
 
         document.getElementById('payment-button').addEventListener('click', function() {
